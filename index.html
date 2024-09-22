@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Enhanced Test Website for Cypress</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Enhanced Test Website for Cypress</h1>
+
+      <!-- Buttons Section -->
+      <div>
+        <h2>Buttons</h2>
+        <button class="button" id="button-1">Click Me!</button>
+        <button class="button secondary" id="button-2">Submit</button>
+      </div>
+
+      <!-- Hovers Section -->
+      <div>
+        <h2>Hover Effect</h2>
+        <button class="button" id="hover-button">Hover Over Me</button>
+      </div>
+
+      <!-- Form Section -->
+      <div>
+        <h2>Forms</h2>
+        <form id="test-form">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Enter your name" />
+            <small class="error-message" id="name-error"
+              >Name is required.</small
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Enter your email" />
+            <small class="error-message" id="email-error"
+              >Valid email is required.</small
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+            />
+            <small class="error-message" id="password-error"
+              >Password is required.</small
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="date">Date of Birth</label>
+            <input type="date" id="date" />
+          </div>
+
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender">
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <button type="submit" class="button" id="submit-form">
+            Submit Form
+          </button>
+        </form>
+      </div>
+
+      <!-- Table Section -->
+      <div>
+        <h2>Table</h2>
+        <table id="test-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Gender</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>John Doe</td>
+              <td>john@example.com</td>
+              <td>Male</td>
+            </tr>
+            <tr>
+              <td>Jane Smith</td>
+              <td>jane@example.com</td>
+              <td>Female</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination Section -->
+      <div>
+        <h2>Pagination</h2>
+        <ul class="pagination">
+          <li><a href="#" class="page-link">1</a></li>
+          <li><a href="#" class="page-link">2</a></li>
+          <li><a href="#" class="page-link">3</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2024 Test Website | Built with HTML, CSS, and JavaScript</p>
+    </footer>
+
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
