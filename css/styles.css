@@ -60,7 +60,6 @@ label {
 input[type='text'],
 input[type='email'],
 input[type='date'],
-input[type='color'],
 select {
   width: 100%;
   padding: 10px;
@@ -100,79 +99,28 @@ th {
   color: white;
 }
 
-/* Pagination */
-#pagination-controls {
+.pagination {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-}
-
-#items-per-page {
-  margin-right: 10px;
-}
-
-/* Tabs */
-.tabs {
-  display: flex;
+  list-style-type: none;
   justify-content: center;
   margin-top: 20px;
 }
 
-.tablink {
-  padding: 10px 20px;
-  cursor: pointer;
-  border: none;
-  background-color: #f2f2f2;
+.pagination li {
   margin: 0 5px;
-  border-radius: 5px;
 }
 
-.tablink:hover {
-  background-color: #e0e0e0;
-}
-
-.tabcontent {
-  display: none;
-  margin-top: 10px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.tabcontent.active {
-  display: block;
-}
-
-/* Accordion */
-.accordion {
-  margin-top: 20px;
-}
-
-.accordion-item {
-  margin-bottom: 10px;
-}
-
-.accordion-header {
+.pagination li a {
+  padding: 10px 15px;
   background-color: #007bff;
   color: white;
-  padding: 10px;
-  border: none;
+  text-decoration: none;
   border-radius: 5px;
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
-.accordion-content {
-  display: none;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-}
-
-.accordion-content.active {
-  display: block;
+.pagination li a:hover {
+  background-color: #0056b3;
 }
 
 /* Footer Styling */

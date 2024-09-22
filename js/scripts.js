@@ -6,16 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const usernameInput = document.getElementById('username');
   const emailInput = document.getElementById('email');
   const dateInput = document.getElementById('date');
-  const colorPickerInput = document.getElementById('color-picker');
   const userTableBody = document.querySelector('#user-table tbody');
   const deleteAllButton = document.getElementById('delete-all');
-
-  // Pagination Elements
-  const itemsPerPageSelect = document.getElementById('items-per-page');
-  const prevPageButton = document.getElementById('prev-page');
-  const nextPageButton = document.getElementById('next-page');
-  let currentPage = 1;
-  let itemsPerPage = 5;
 
   // Helper Function to Validate Email
   function validateEmail(email) {
@@ -34,50 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
     localStorage.setItem('users', JSON.stringify(users));
   }
 
-  // Display Users in Table with Pagination
+  // Display Users in Table
   function displayUsers() {
     const users = loadUsers();
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const paginatedUsers = users.slice(start, end);
-
     userTableBody.innerHTML = ''; // Clear current rows
-    paginatedUsers.forEach((user) => {
+    users.forEach((user) => {
       const row = `<tr>
                           <td>${user.firstName}</td>
                           <td>${user.lastName}</td>
                           <td>${user.username}</td>
                           <td>${user.email}</td>
                           <td>${user.dateOfBirth}</td>
-                          <td style="background-color: ${user.color};">${user.color}</td>
                        </tr>`;
       userTableBody.insertAdjacentHTML('beforeend', row);
     });
   }
-
-  // Update Items Per Page
-  itemsPerPageSelect.addEventListener('change', (e) => {
-    itemsPerPage =
-      e.target.value === 'all' ? Infinity : parseInt(e.target.value);
-    currentPage = 1; // Reset to first page
-    displayUsers();
-  });
-
-  // Pagination Controls
-  prevPageButton.addEventListener('click', () => {
-    if (currentPage > 1) {
-      currentPage--;
-      displayUsers();
-    }
-  });
-
-  nextPageButton.addEventListener('click', () => {
-    const users = loadUsers();
-    if (currentPage < Math.ceil(users.length / itemsPerPage)) {
-      currentPage++;
-      displayUsers();
-    }
-  });
 
   // Form Submission Handler
   registerForm.addEventListener('submit', (e) => {
@@ -89,7 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const username = usernameInput.value.trim();
     const email = emailInput.value.trim();
     const dateOfBirth = dateInput.value;
-    const favoriteColor = colorPickerInput.value;
 
     let valid = true;
 
@@ -128,14 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (valid) {
       // Save the new user
       const users = loadUsers();
-      users.push({
-        firstName,
-        lastName,
-        username,
-        email,
-        dateOfBirth,
-        color: favoriteColor,
-      });
+      users.push({ firstName, lastName, username, email, dateOfBirth });
       saveUsers(users);
       displayUsers();
 
@@ -152,25 +107,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initial Load
   displayUsers();
-
-  // Tabs Functionality
-  window.openTab = function (event, tabName) {
-    const tabcontent = document.querySelectorAll('.tabcontent');
-    tabcontent.forEach((content) => content.classList.remove('active'));
-
-    const tablinks = document.querySelectorAll('.tablink');
-    tablinks.forEach((link) => link.classList.remove('active'));
-
-    document.getElementById(tabName).classList.add('active');
-    event.currentTarget.classList.add('active');
-  };
-
-  // Accordion Functionality
-  const accordionHeaders = document.querySelectorAll('.accordion-header');
-  accordionHeaders.forEach((header) => {
-    header.addEventListener('click', () => {
-      const content = header.nextElementSibling;
-      content.classList.toggle('active');
-    });
-  });
 });
