@@ -1,76 +1,110 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Button Click Events
-  const button1 = document.getElementById('button-1');
-  button1.addEventListener('click', () => {
-    alert('Button 1 was clicked!');
-  });
+  // Form Elements
+  const registerForm = document.getElementById('register-form');
+  const firstNameInput = document.getElementById('first-name');
+  const lastNameInput = document.getElementById('last-name');
+  const usernameInput = document.getElementById('username');
+  const emailInput = document.getElementById('email');
+  const dateInput = document.getElementById('date');
+  const userTableBody = document.querySelector('#user-table tbody');
+  const deleteAllButton = document.getElementById('delete-all');
 
-  const button2 = document.getElementById('button-2');
-  button2.addEventListener('click', () => {
-    console.log('Button 2 Clicked');
-  });
+  // Helper Function to Validate Email
+  function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(String(email).toLowerCase());
+  }
 
-  // Hover Effect
-  const hoverButton = document.getElementById('hover-button');
-  hoverButton.addEventListener('mouseover', () => {
-    hoverButton.style.backgroundColor = 'green';
-    hoverButton.textContent = "I'm Hovered!";
-  });
-  hoverButton.addEventListener('mouseout', () => {
-    hoverButton.style.backgroundColor = '#007BFF';
-    hoverButton.textContent = 'Hover Over Me';
-  });
+  // Load Users from Local Storage (Simulating JSON Database)
+  function loadUsers() {
+    const users = JSON.parse(localStorage.getItem('users')) || [];
+    return users;
+  }
 
-  // Form Validation and Submission
-  const form = document.getElementById('test-form');
-  form.addEventListener('submit', (e) => {
+  // Save Users to Local Storage
+  function saveUsers(users) {
+    localStorage.setItem('users', JSON.stringify(users));
+  }
+
+  // Display Users in Table
+  function displayUsers() {
+    const users = loadUsers();
+    userTableBody.innerHTML = ''; // Clear current rows
+    users.forEach((user) => {
+      const row = `<tr>
+                          <td>${user.firstName}</td>
+                          <td>${user.lastName}</td>
+                          <td>${user.username}</td>
+                          <td>${user.email}</td>
+                          <td>${user.dateOfBirth}</td>
+                       </tr>`;
+      userTableBody.insertAdjacentHTML('beforeend', row);
+    });
+  }
+
+  // Form Submission Handler
+  registerForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     // Input Validation
-    const name = document.getElementById('name');
-    const email = document.getElementById('email');
-    const password = document.getElementById('password');
+    const firstName = firstNameInput.value.trim();
+    const lastName = lastNameInput.value.trim();
+    const username = usernameInput.value.trim();
+    const email = emailInput.value.trim();
+    const dateOfBirth = dateInput.value;
 
     let valid = true;
 
-    if (!name.value) {
-      document.getElementById('name-error').style.visibility = 'visible';
+    // Validate First Name
+    if (!firstName) {
+      document.getElementById('first-name-error').style.visibility = 'visible';
       valid = false;
     } else {
-      document.getElementById('name-error').style.visibility = 'hidden';
+      document.getElementById('first-name-error').style.visibility = 'hidden';
     }
 
-    if (!email.value || !validateEmail(email.value)) {
+    // Validate Last Name
+    if (!lastName) {
+      document.getElementById('last-name-error').style.visibility = 'visible';
+      valid = false;
+    } else {
+      document.getElementById('last-name-error').style.visibility = 'hidden';
+    }
+
+    // Validate Username
+    if (!username) {
+      document.getElementById('username-error').style.visibility = 'visible';
+      valid = false;
+    } else {
+      document.getElementById('username-error').style.visibility = 'hidden';
+    }
+
+    // Validate Email
+    if (!email || !validateEmail(email)) {
       document.getElementById('email-error').style.visibility = 'visible';
       valid = false;
     } else {
       document.getElementById('email-error').style.visibility = 'hidden';
     }
 
-    if (!password.value) {
-      document.getElementById('password-error').style.visibility = 'visible';
-      valid = false;
-    } else {
-      document.getElementById('password-error').style.visibility = 'hidden';
-    }
-
     if (valid) {
-      alert(`Form submitted with Name: ${name.value}, Email: ${email.value}`);
+      // Save the new user
+      const users = loadUsers();
+      users.push({ firstName, lastName, username, email, dateOfBirth });
+      saveUsers(users);
+      displayUsers();
+
+      // Clear form fields
+      registerForm.reset();
     }
   });
 
-  // Validate Email Format
-  function validateEmail(email) {
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return re.test(String(email).toLowerCase());
-  }
-
-  // Pagination Click Event
-  const paginationLinks = document.querySelectorAll('.page-link');
-  paginationLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      alert(`You clicked on page ${e.target.innerText}`);
-    });
+  // Delete All Users
+  deleteAllButton.addEventListener('click', () => {
+    localStorage.removeItem('users');
+    displayUsers(); // Refresh the table
   });
+
+  // Initial Load
+  displayUsers();
 });
