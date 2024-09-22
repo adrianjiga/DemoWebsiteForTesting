@@ -20,6 +20,7 @@
               type="text"
               id="first-name"
               placeholder="Enter your first name"
+              required
             />
             <small class="error-message" id="first-name-error"
               >First name is required.</small
@@ -32,6 +33,7 @@
               type="text"
               id="last-name"
               placeholder="Enter your last name"
+              required
             />
             <small class="error-message" id="last-name-error"
               >Last name is required.</small
@@ -40,7 +42,12 @@
 
           <div class="form-group">
             <label for="username">Username</label>
-            <input type="text" id="username" placeholder="Choose a username" />
+            <input
+              type="text"
+              id="username"
+              placeholder="Choose a username"
+              required
+            />
             <small class="error-message" id="username-error"
               >Username is required.</small
             >
@@ -48,7 +55,12 @@
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" placeholder="Enter your email" />
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
             <small class="error-message" id="email-error"
               >A valid email is required.</small
             >
@@ -59,8 +71,54 @@
             <input type="date" id="date" />
           </div>
 
+          <div class="form-group">
+            <label for="color-picker">Favorite Color</label>
+            <input type="color" id="color-picker" />
+          </div>
+
+          <div class="form-group">
+            <label>Gender</label>
+            <div>
+              <label
+                ><input type="radio" name="gender" value="male" /> Male</label
+              >
+              <label
+                ><input type="radio" name="gender" value="female" />
+                Female</label
+              >
+              <label
+                ><input type="radio" name="gender" value="other" /> Other</label
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label
+              ><input type="checkbox" id="terms" required /> I accept the terms
+              and conditions</label
+            >
+          </div>
+
           <button type="submit" class="button">Register</button>
         </form>
+      </div>
+
+      <!-- Pagination Control -->
+      <div>
+        <h2>Pagination</h2>
+        <div id="pagination-controls">
+          <label for="items-per-page">Items per page:</label>
+          <select id="items-per-page">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="all">All</option>
+          </select>
+          <button id="prev-page" class="button secondary">Previous</button>
+          <button id="next-page" class="button secondary">Next</button>
+        </div>
       </div>
 
       <!-- Table Section -->
@@ -74,6 +132,8 @@
               <th>Username</th>
               <th>Email</th>
               <th>Date of Birth</th>
+              <th>Favorite Color</th>
+              <th>Gender</th>
             </tr>
           </thead>
           <tbody>
@@ -81,6 +141,44 @@
           </tbody>
         </table>
         <button id="delete-all" class="button secondary">Delete All</button>
+      </div>
+    </div>
+
+    <!-- Tabs Section -->
+    <div class="tabs full-width">
+      <h2>Tabs Example</h2>
+      <div>
+        <button class="tablink active" onclick="openTab(event, 'tab1')">
+          Tab 1
+        </button>
+        <button class="tablink" onclick="openTab(event, 'tab2')">Tab 2</button>
+      </div>
+
+      <div id="tab1" class="tabcontent active">
+        <h3>Tab 1 Content</h3>
+        <p>Some content for Tab 1.</p>
+      </div>
+
+      <div id="tab2" class="tabcontent">
+        <h3>Tab 2 Content</h3>
+        <p>Some content for Tab 2.</p>
+      </div>
+    </div>
+
+    <!-- Accordion Section -->
+    <div class="accordion full-width">
+      <h2>Accordion Example</h2>
+      <div class="accordion-item">
+        <button class="accordion-header">Section 1</button>
+        <div class="accordion-content">
+          <p>Content for Section 1.</p>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-header">Section 2</button>
+        <div class="accordion-content">
+          <p>Content for Section 2.</p>
+        </div>
       </div>
     </div>
 
