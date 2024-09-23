@@ -11,17 +11,12 @@
       <h1>Platform Registration</h1>
 
       <!-- Registration Form -->
-      <div>
+      <section>
         <h2>Register Form</h2>
         <form id="register-form">
           <div class="form-group">
             <label for="first-name">First Name</label>
-            <input
-              type="text"
-              id="first-name"
-              placeholder="Enter your first name"
-              required
-            />
+            <input type="text" id="first-name" name="firstName" required />
             <small class="error-message" id="first-name-error"
               >First name is required.</small
             >
@@ -29,12 +24,7 @@
 
           <div class="form-group">
             <label for="last-name">Last Name</label>
-            <input
-              type="text"
-              id="last-name"
-              placeholder="Enter your last name"
-              required
-            />
+            <input type="text" id="last-name" name="lastName" required />
             <small class="error-message" id="last-name-error"
               >Last name is required.</small
             >
@@ -42,12 +32,7 @@
 
           <div class="form-group">
             <label for="username">Username</label>
-            <input
-              type="text"
-              id="username"
-              placeholder="Choose a username"
-              required
-            />
+            <input type="text" id="username" name="username" required />
             <small class="error-message" id="username-error"
               >Username is required.</small
             >
@@ -55,12 +40,7 @@
 
           <div class="form-group">
             <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="Enter your email"
-              required
-            />
+            <input type="email" id="email" name="email" required />
             <small class="error-message" id="email-error"
               >A valid email is required.</small
             >
@@ -68,12 +48,12 @@
 
           <div class="form-group">
             <label for="date">Date of Birth</label>
-            <input type="date" id="date" />
+            <input type="date" id="date" name="dateOfBirth" />
           </div>
 
           <div class="form-group">
             <label for="color-picker">Favorite Color</label>
-            <input type="color" id="color-picker" />
+            <input type="color" id="color-picker" name="favoriteColor" />
           </div>
 
           <div class="form-group">
@@ -94,35 +74,17 @@
 
           <div class="form-group">
             <label
-              ><input type="checkbox" id="terms" required /> I accept the terms
-              and conditions</label
+              ><input type="checkbox" id="terms" name="terms" required /> I
+              accept the terms and conditions</label
             >
           </div>
 
           <button type="submit" class="button">Register</button>
         </form>
-      </div>
+      </section>
 
-      <!-- Pagination Control -->
-      <div>
-        <h2>Pagination</h2>
-        <div id="pagination-controls">
-          <label for="items-per-page">Items per page:</label>
-          <select id="items-per-page">
-            <option value="1">1</option>
-            <option value="3">3</option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="25">25</option>
-            <option value="all">All</option>
-          </select>
-          <button id="prev-page" class="button secondary">Previous</button>
-          <button id="next-page" class="button secondary">Next</button>
-        </div>
-      </div>
-
-      <!-- Table Section -->
-      <div>
+      <!-- User Table Section -->
+      <section>
         <h2>Registered Users</h2>
         <table id="user-table">
           <thead>
@@ -137,56 +99,86 @@
             </tr>
           </thead>
           <tbody>
-            <!-- Dynamic content will be injected here -->
+            <!-- Table rows will be dynamically inserted here -->
           </tbody>
         </table>
-        <button id="delete-all" class="button secondary">Delete All</button>
-      </div>
+      </section>
+
+      <!-- Pagination Control -->
+      <section>
+        <div id="pagination-controls">
+          <label for="items-per-page">Items per page:</label>
+          <select id="items-per-page">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+          </select>
+          <button id="prev-page" class="button secondary">Previous</button>
+          <button id="next-page" class="button secondary">Next</button>
+        </div>
+      </section>
     </div>
 
     <!-- Tabs Section -->
-    <div class="tabs full-width">
+    <div class="container">
       <h2>Tabs Example</h2>
-      <div>
-        <button class="tablink active" onclick="openTab(event, 'tab1')">
+      <div class="tabs" role="tablist">
+        <button
+          id="tab1"
+          class="tablink"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel1"
+        >
           Tab 1
         </button>
-        <button class="tablink" onclick="openTab(event, 'tab2')">Tab 2</button>
+        <button
+          id="tab2"
+          class="tablink"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel2"
+        >
+          Tab 2
+        </button>
       </div>
 
-      <div id="tab1" class="tabcontent active">
+      <div
+        id="panel1"
+        class="tabcontent"
+        role="tabpanel"
+        aria-labelledby="tab1"
+      >
         <h3>Tab 1 Content</h3>
-        <p>Some content for Tab 1.</p>
+        <p>
+          This is the content for Tab 1. You can put any information or
+          functionality here.
+        </p>
       </div>
 
-      <div id="tab2" class="tabcontent">
+      <div
+        id="panel2"
+        class="tabcontent"
+        role="tabpanel"
+        aria-labelledby="tab2"
+        hidden
+      >
         <h3>Tab 2 Content</h3>
-        <p>Some content for Tab 2.</p>
-      </div>
-    </div>
-
-    <!-- Accordion Section -->
-    <div class="accordion full-width">
-      <h2>Accordion Example</h2>
-      <div class="accordion-item">
-        <button class="accordion-header">Section 1</button>
-        <div class="accordion-content">
-          <p>Content for Section 1.</p>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <button class="accordion-header">Section 2</button>
-        <div class="accordion-content">
-          <p>Content for Section 2.</p>
-        </div>
+        <p>
+          This is the content for Tab 2. You can put different information or
+          functionality here.
+        </p>
       </div>
     </div>
 
     <!-- Footer -->
     <footer>
-      <p>&copy; 2024 Test Website | Built with HTML, CSS, and JavaScript</p>
+      <div class="container">
+        <p>&copy; 2024 Demo Website | Built for Cypress Testing</p>
+      </div>
     </footer>
 
-    <script src="js/scripts.js"></script>
+    <script type="module" src="main.js"></script>
   </body>
 </html>
