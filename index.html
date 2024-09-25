@@ -10,7 +10,6 @@
     <div class="container">
       <h1>Platform Registration</h1>
 
-      <!-- Registration Form -->
       <section>
         <h2>Register Form</h2>
         <form id="register-form">
@@ -83,7 +82,6 @@
         </form>
       </section>
 
-      <!-- User Table Section -->
       <section>
         <h2>Registered Users</h2>
         <table id="user-table">
@@ -104,7 +102,6 @@
         </table>
       </section>
 
-      <!-- Pagination Control -->
       <section>
         <div id="pagination-controls">
           <label for="items-per-page">Items per page:</label>
@@ -120,59 +117,59 @@
       </section>
     </div>
 
-    <!-- Tabs Section -->
     <div class="container">
       <h2>Tabs Example</h2>
-      <div class="tabs" role="tablist">
-        <button
-          id="tab1"
-          class="tablink"
-          role="tab"
-          aria-selected="true"
-          aria-controls="panel1"
-        >
-          Tab 1
-        </button>
-        <button
-          id="tab2"
-          class="tablink"
-          role="tab"
-          aria-selected="false"
-          aria-controls="panel2"
-        >
-          Tab 2
-        </button>
-      </div>
+      <div class="tabs">
+        <div class="tab-buttons" role="tablist">
+          <button
+            id="tab1"
+            class="tablink"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panel1"
+          >
+            Tab 1
+          </button>
+          <button
+            id="tab2"
+            class="tablink"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panel2"
+          >
+            Tab 2
+          </button>
+        </div>
 
-      <div
-        id="panel1"
-        class="tabcontent"
-        role="tabpanel"
-        aria-labelledby="tab1"
-      >
-        <h3>Tab 1 Content</h3>
-        <p>
-          This is the content for Tab 1. You can put any information or
-          functionality here.
-        </p>
-      </div>
+        <div
+          id="panel1"
+          class="tabcontent"
+          role="tabpanel"
+          aria-labelledby="tab1"
+        >
+          <h3>Tab 1 Content</h3>
+          <p>
+            This is the content for Tab 1. You can put any information or
+            functionality here.
+          </p>
+        </div>
 
-      <div
-        id="panel2"
-        class="tabcontent"
-        role="tabpanel"
-        aria-labelledby="tab2"
-        hidden
-      >
-        <h3>Tab 2 Content</h3>
-        <p>
-          This is the content for Tab 2. You can put different information or
-          functionality here.
-        </p>
+        <div
+          id="panel2"
+          class="tabcontent"
+          role="tabpanel"
+          aria-labelledby="tab2"
+          hidden
+        >
+          <h3>Tab 2 Content</h3>
+          <p>
+            This is the content for Tab 2. You can put different information or
+            functionality here.
+          </p>
+        </div>
       </div>
     </div>
 
-    <!-- Footer -->
     <footer>
       <div class="container">
         <p>&copy; 2024 Demo Website | Built for Cypress Testing</p>

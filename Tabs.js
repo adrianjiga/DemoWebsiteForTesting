@@ -4,6 +4,7 @@ export class Tabs {
     this.tabLinks = document.querySelectorAll('.tablink');
     this.tabContents = document.querySelectorAll('.tabcontent');
     this.setupEventListeners();
+    this.activateTab(this.tabLinks[0]);
   }
 
   setupEventListeners() {
@@ -41,13 +42,17 @@ export class Tabs {
   }
 
   activateTab(tab) {
-    this.tabLinks.forEach((t) => t.setAttribute('aria-selected', 'false'));
-    this.tabContents.forEach((c) => c.setAttribute('hidden', ''));
+    this.tabLinks.forEach((t) => {
+      t.setAttribute('aria-selected', 'false');
+      t.classList.remove('active');
+    });
+    this.tabContents.forEach((c) => (c.hidden = true));
 
     tab.setAttribute('aria-selected', 'true');
+    tab.classList.add('active');
     const tabContent = document.getElementById(
       tab.getAttribute('aria-controls')
     );
-    tabContent.removeAttribute('hidden');
+    tabContent.hidden = false;
   }
 }
